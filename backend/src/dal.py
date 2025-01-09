@@ -128,7 +128,7 @@ class ToDoDAL:
         item_id: str,
         session=None
     ) -> ToDoList:
-        result = await self._todo_collection.delete_one(
+        result = await self._todo_collection.find_one_and_update(
             {'_id': ObjectId(doc_id)},
             {'$pull': {'items': {'id': item_id}}},
             session=session,

@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 
     # Ensure the database is available:
     pong = await database.command('ping')
-    if int(pong['okay']) != 1:
+    if pong.get('ok', 0) != 1:
         raise Exception("Cluster connection is not okay!")
     
     todo_list = database.get_collection(COLLECTION_NAME)
@@ -101,7 +101,7 @@ class ToDoItemUpdate(BaseModel):
 
 
 @app.patch("/api/lists/{list_id}/checked_state")
-async def set_checked_state(list_id: str, update: ToDoItemUpdate) -> ToDoDAL:
+async def set_checked_state(list_id: str, update: ToDoItemUpdate) -> ToDoList:
     return await app.todo_dal.set_checked_state(list_id, update.item_id, update.checked_state)
 
 
