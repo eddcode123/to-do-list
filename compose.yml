@@ -1,4 +1,4 @@
-name: todo-app
+version: "3.3"
 services:
   nginx:
     image: nginx:1.17
@@ -35,6 +35,6 @@ services:
     command: "python src/server.py"
     environment:
       - DEBUG=true
+
     env_file:
-      - path: ./.env
-        required: true
+      - .env
