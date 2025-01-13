@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 import sys
 import os
+from dotenv import load_dotenv
 
 from bson import ObjectId
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -11,9 +12,11 @@ import uvicorn
 
 from dal import ListSummary, ToDoDAL, ToDoList
 
+# Load environment variables from .env file
+load_dotenv()
 
 COLLECTION_NAME = 'todo_lists'
-MONGODB_URI = os.environ["MONGODB_URI"]
+MONGODB_URI = os.getenv('MONGODB_URI')
 DEBUG = os.environ.get("DEBUG", "").strip().lower() in {"1", "true", "on", "yes"}
 
 @asynccontextmanager
