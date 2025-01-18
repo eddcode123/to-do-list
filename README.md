@@ -25,7 +25,7 @@ This is a simple Todo List application with a full-stack architecture. The proje
 3. **Access the Application**:
    Once the services are up and running, navigate to [http://localhost:8000](http://localhost:8000) to view the app.
    
-   The frontend will be served by Nginx, which will communicate with the Flask backend.
+   The frontend will be served by Nginx, which will communicate with the Fastapi backend.
 
 ## Folder Descriptions
 
@@ -77,24 +77,6 @@ If you'd like to run the frontend and backend separately in development mode (wi
    ```
 
 The frontend application will be available at [http://localhost:3000](http://localhost:3000), and the backend API will be accessible at its default URL.
-
-## Testing
-
-The project includes some basic tests for the frontend and backend components. To run the tests:
-
-### Backend Tests
-
-Use `pytest` to run the backend tests:
-```bash
-pytest
-```
-
-### Frontend Tests
-
-Use the React testing framework to run frontend tests:
-```bash
-npm test
-```
 
 ## Deployment
 
