@@ -78,6 +78,25 @@ If you'd like to run the frontend and backend separately in development mode (wi
 
 The frontend application will be available at [http://localhost:3000](http://localhost:3000), and the backend API will be accessible at its default URL.
 
+
+## Testing
+
+The project includes some basic tests for the frontend and backend components. To run the tests:
+
+### Backend Tests
+
+Use `pytest` to run the backend tests:
+```bash
+pytest
+```
+
+### Frontend Tests
+
+Use the React testing framework to run frontend tests:
+```bash
+npm test
+```
+
 ## Deployment
 
 Once you're ready to deploy the application, you can use Docker containers to deploy to any server or cloud service that supports Docker. Ensure you have the correct environment variables and configurations for production use.
