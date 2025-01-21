@@ -7,35 +7,40 @@ import ToDoList from "./ToDoList";
 function App() {
   const [listSummaries, setListSummaries] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     reloadData().catch(console.error);
   }, []);
 
   async function reloadData() {
-    const response = await axios.get("/api/lists");
-    const data = await response.data;
-    setListSummaries(data);
+    setIsLoading(true);
+    try {
+      const response = await axios.get("/api/lists");
+      setListSummaries(response.data);
+    } catch (error) {
+      console.error("Failed to fetch list summaries:", error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  function handleNewToDoList(newName) {
-    const updateData = async () => {
-      const newListData = {
-        name: newName,
-      };
-
-      await axios.post(`/api/lists`, newListData);
-      reloadData().catch(console.error);
-    };
-    updateData();
+  async function handleNewToDoList(newName) {
+    try {
+      await axios.post("/api/lists", { name: newName });
+      await reloadData();
+    } catch (error) {
+      console.error("Failed to add a new list:", error);
+    }
   }
 
-  function handleDeleteToDoList(id) {
-    const updateData = async () => {
+  async function handleDeleteToDoList(id) {
+    try {
       await axios.delete(`/api/lists/${id}`);
-      reloadData().catch(console.error);
-    };
-    updateData();
+      await reloadData();
+    } catch (error) {
+      console.error("Failed to delete the list:", error);
+    }
   }
 
   function handleSelectList(id) {
@@ -46,6 +51,10 @@ function App() {
   function backToList() {
     setSelectedItem(null);
     reloadData().catch(console.error);
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   if (selectedItem === null) {
