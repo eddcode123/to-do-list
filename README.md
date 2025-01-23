@@ -30,7 +30,7 @@ This is a simple Todo List application with a full-stack architecture. The proje
 ## Folder Descriptions
 
 - **`backend/`**: Contains the server and business logic of the application.
-  - **`dal.py`**: Responsible for the data access layer (e.g., interacting with databases or storage).
+  - **`model.py`**: Responsible for the data access layer (e.g., interacting with databases or storage).
   - **`server.py`**: The main entry point for the Fastapi backend.
   - **`Dockerfile`**: Configuration for building a Docker container for the backend service.
 
