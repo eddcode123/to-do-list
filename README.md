@@ -44,7 +44,7 @@ This is a simple Todo List application with a full-stack architecture. The proje
 
 You can configure different environment variables or settings for each part of the application by modifying the respective configuration files:
 
-- **Backend Configuration**: Modify the `server.py` and `dal.py` files to customize the backend logic or data access methods.
+- **Backend Configuration**: Modify the `server.py` and `model.py` files to customize the backend logic or data access methods.
 - **Frontend Configuration**: Edit `App.js` and other components under the `frontend/src/` folder to change the appearance and functionality of the UI.
 - **Nginx Configuration**: Update the `nginx.conf` file to configure reverse proxy behavior, such as defining how the frontend and backend communicate.
 
